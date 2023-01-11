@@ -20,10 +20,6 @@ jobs:
         run: |
           sudo apt install jq
           jq --version
-      - name: Flash DNS
-        shell: bash
-        run: |
-          sudo './flashdns.sh'
       - name: Convert resources 1.18 -> 1.19.3
         id: convert_resources
         shell: bash
