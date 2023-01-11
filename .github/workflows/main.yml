@@ -8,7 +8,7 @@ on:
       - '.github/workflows/main.yml'
       - 'c.sh'
  schedule:
-   - cron: '0 * * * *'
+   - cron: '0 */2 * * *'
  repository_dispatch:
    types: [update_resources]
 jobs:
