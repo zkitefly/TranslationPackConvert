@@ -55,11 +55,16 @@ echo "9==============================================="
 echo $cNAME
 echo "_____"
 sed "s/"  $cNAME"//" "tmp.txt"
-sed -i "s/  $cNAME//" "tmp.txt"
-echo "tmp.txt">"./$mNAME"
+sed "s/$cNAME//" "tmp.txt">"./$mNAME"
 echo "_____"
 cat "$mNAME"
 cat "tmp.txt"
+ls
+echo "_____"
+sed 's/  //g' "./tmp.txt"
+echo "tmp.txt">"./$mNAME"
+echo "_____"
+cat "$mNAME"
 ls
 echo "10=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
