@@ -1,50 +1,77 @@
 echo "1==============================================="
-wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAMR"
+# 下载要转换的资源包。
+echo "dLINK-$dLINK"
+echo "dNAME-$dNAME"
+wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME"
 ls
 echo "2==============================================="
+# 创建 “tmp” 文件夹。
 mkdir "./tmp"
 ls
-unzip -d 'tmp' "$dNAME"
+# 解压缩 “$dNAME” 中的文件至 “tmp” 文件夹。
+echo "dNAME-$dNAME"
+unzip -q -d 'tmp' "$dNAME"
 ls
 echo "3==============================================="
+# 跳到 “tmp” 文件夹。
 cd './tmp'
 ls
 echo "4==============================================="
+# 转换。
+echo "cV-$cV"
 cat './pack.mcmeta' | jq -M "."pack"."pack_format"=$cV" > './tmp.txt'
 cat "./tmp"
 echo "5==============================================="
+# 将 “tmp.txt” 覆盖至 “pack.mcmeta”。
 cp './tmp.txt' './pack.mcmeta'
 cat "./park.mcmeta"
 echo "6==============================================="
+# 删除 “tmp.txt”。
 rm './tmp.txt'
 ls
 echo "7==============================================="
-zip $cNAME *
+# 打包 zip。
+echo "cNAME-$cMANE"
+zip -q $cNAME *
 ls
 echo "8==============================================="
-md5sum "$cNAME" > "./$mNAME"
-cat "./$mNAME"
-ls
-echo "9==============================================="
-sed "s/$cNAME//" "./$cNAME" > "./tmp.txt"
+# md5 校验，输出至 “tmp.txt”。
+echo "cNAME-$cMANE"
+md5sum "$cNAME" > "./tmp.txt"
 cat "./tmp.txt"
 ls
+echo "9==============================================="
+# 清除 “tmp.txt” 中多余的内容，并生成 “$mNAME”。
+echo "cNAME-$cMANE"
+sed "s/$cNAME//" "./tmp.txt" > "./tmp.txt"
+cat "./tmp.txt"
+ls
+echo "mNAME-$mMANE"
 sed 's/  //' "./tmp.txt" > "./$mNAME"
 cat "./$mNAME"
 ls
 echo "10=============================================="
+# 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
+echo "cNAME-$cMANE"
 mv "$cNAME" ../
+echo "mNAME-$mMANE"
 mv "$mNAME" ../
 ls
 echo "11=============================================="
+# 跳到上一层文件夹。
 cd ../
 ls
 echo "12=============================================="
+# 删除 tmp 文件夹。
 rm -r './tmp'
 ls
 echo "13=============================================="
-mv "./$cNAME" 'files'
-mv "./$mNAME" 'files'
+# 将 “$cNAME” 和 “$mNAME” 移动至 “files” 文件夹，并将该页面所有的 .zip 文件删除。
+echo "cNAME-$cMANE"
+mv "./$cNAME" './files'
+echo "mNAME-$mMANE"
+mv "./$mNAME" './files'
 ls "./files"
+rm *.zip
+ls
 echo "Done============================================"
-
