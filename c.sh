@@ -47,7 +47,7 @@ ls
 echo "8==============================================="
 # md5 校验，输出至 “tmp.txt”。
 echo $cNAME
-md5sum "$cNAME">"tmp.txt"
+md5sum "$cNAME" > "tmp.txt"
 cat "tmp.txt"
 ls
 echo "9==============================================="
@@ -55,19 +55,18 @@ echo "9==============================================="
 echo $cNAME
 echo "_____"
 sed "s/$cNAME//" "tmp.txt"
-sed "s/$cNAME//" "tmp.txt">"./$mNAME"
+sed "s/$cNAME//" "tmp.txt" > "./$mNAME"
 echo "_____"
 cat "$mNAME"
 cat "tmp.txt"
 ls
 echo "_____"
 cat "$mNAME" | sed 's/ //g'
-cat "$mNAME" | sed 's/ //g'>"tmp.txt"
+cat "$mNAME" | sed 's/ //g' > "tmp.txt"
+echo "_____"
 echo "tmp.txt">"./$mNAME"
 cat "$mNAME"
 cat "tmp.txt"
-echo "_____"
-cat "$mNAME"
 ls
 echo "10=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
