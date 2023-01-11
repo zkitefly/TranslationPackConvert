@@ -22,11 +22,11 @@ echo "4==============================================="
 echo "cV-$cV"
 echo > './tmp.txt'
 cat 'pack.mcmeta' | jq -M "."pack"."pack_format"=$cV" > 'tmp.txt'
-cat "./tmp"
+cat "tmp"
 echo "5==============================================="
 # 将 “tmp.txt” 覆盖至 “pack.mcmeta”。
 cp './tmp.txt' './pack.mcmeta'
-cat "./park.mcmeta"
+cat "park.mcmeta"
 echo "6==============================================="
 # 删除 “tmp.txt”。
 rm './tmp.txt'
@@ -40,17 +40,17 @@ echo "8==============================================="
 # md5 校验，输出至 “tmp.txt”。
 echo "cNAME-$cMANE"
 md5sum "$cNAME" > "./tmp.txt"
-cat "./tmp.txt"
+cat "tmp.txt"
 ls
 echo "9==============================================="
 # 清除 “tmp.txt” 中多余的内容，并生成 “$mNAME”。
 echo "cNAME-$cMANE"
 sed "s/$cNAME//" "./tmp.txt" > "./tmp.txt"
-cat "./tmp.txt"
+cat "tmp.txt"
 ls
 echo "mNAME-$mMANE"
 sed 's/  //' "./tmp.txt" > "./$mNAME"
-cat "./$mNAME"
+cat "$mNAME"
 ls
 echo "10=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
@@ -69,9 +69,9 @@ rm -r './tmp'
 ls
 echo "13=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至 “files” 文件夹，并将该页面所有的 .zip 文件删除。
-echo "cNAME-$cMANE"
+echo "cNAME-$cNAME"
 mv "./$cNAME" './files'
-echo "mNAME-$mMANE"
+echo "mNAME-$mNAME"
 mv "./$mNAME" './files'
 ls "./files"
 rm *.zip
