@@ -25,6 +25,7 @@ cat 'tmp.txt'
 ls
 echo >> "park.mcmeta"
 file "pack.mcmeta"
+cat "pack.mcmeta"
 cat "pack.mcmeta" | jq -M "."pack"."pack_format"=$cV">"tmp.txt"
 ls
 cat "tmp.txt"
