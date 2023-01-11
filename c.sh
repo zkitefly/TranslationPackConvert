@@ -8,8 +8,8 @@ zip "$cNAME" *
 md5sum "./$cNAME" > "./$mNAME"
 sed 's/  //' > "./$mNAME"
 sed "s/$cNAME//" > "./$mNAME"
-mv "./$cNAME" ../
-mv "./$mNAME" ../
+mv "$cNAME" ../
+mv "$mNAME" ../
 cd ../
 rm -r './tmp'
 mv "./$cNAME" 'files'

@@ -217,7 +217,7 @@ jobs:
           # 下载链接前缀，后面不得加 /
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
-          export "dNAMR=Minecraft-Mod-Language-Modpack-1-16-Fabric.zip$dNAME"
+          export "dNAMR=Minecraft-Mod-Language-Modpack-1-16.zip$dNAME"
           # 转换的名字，带 .zip
           export "cNAMR=Minecraft-Mod-Language-Modpack-1-16FabricT1.17-Fabric.zip$NAME"
           # 修改资源包 pack_format 的 value
