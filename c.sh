@@ -23,7 +23,8 @@ echo "cV-$cV"
 echo > './tmp.txt'
 cat 'tmp.txt'
 ls
-cat "pack.mcmeta" | jq -M "."pack"."pack_format"=$cV">'tmp.txt'
+echo >> "park.mcmeta"
+cat "pack.mcmeta" | jq -M "."pack"."pack_format"=$cV">"tmp.txt"
 ls
 cat "tmp.txt"
 echo "5==============================================="
@@ -53,7 +54,7 @@ echo "cNAME-$cNANE"
 sed "s/$cNAME//" "tmp.txt">"tmp.txt"
 cat "tmp.txt"
 ls
-echo "mNAME-$mMANE"
+echo "mNAME-$mNANE"
 sed 's/  //' "./tmp.txt">"./$mNAME"
 cat "$mNAME"
 ls
@@ -61,7 +62,7 @@ echo "10=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
 echo "cNAME-$cNANE"
 mv "$cNAME" ../
-echo "mNAME-$mMANE"
+echo "mNAME-$mNANE"
 mv "$mNAME" ../
 ls
 echo "11=============================================="
