@@ -7,7 +7,7 @@ wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME"
 ls
 echo "2==============================================="
 # 创建 “tmp” 文件夹。
-mkdir "./tmp"
+mkdir "tmp"
 ls
 # 解压缩 “$dNAME” 中的文件至 “tmp” 文件夹。
 echo "dNAME-$dNAME"
@@ -15,7 +15,7 @@ unzip -q -d 'tmp' "$dNAME"
 ls
 echo "3==============================================="
 # 跳到 “tmp” 文件夹。
-cd './tmp'
+cd 'tmp'
 ls
 echo "4==============================================="
 # 转换。
@@ -23,17 +23,18 @@ echo "cV-$cV"
 echo > './tmp.txt'
 cat 'tmp.txt'
 ls
-cat "pack.mcmeta" | jq -M "."pack"."pack_format"=$cV" > 'tmp.txt'
+cat "pack.mcmeta" | jq -M "."pack"."pack_format"=$cV">'tmp.txt'
 ls
 cat "tmp.txt"
 echo "5==============================================="
 # 将 “tmp.txt” 覆盖至 “pack.mcmeta”。
-cp './tmp.txt' './pack.mcmeta'
+cp 'tmp.txt' 'pack.mcmeta'
+echo >> "park.mcmeta"
 cat "park.mcmeta"
 ls
 echo "6==============================================="
 # 删除 “tmp.txt”。
-rm './tmp.txt'
+rm 'tmp.txt'
 ls
 echo "7==============================================="
 # 打包 zip。
@@ -43,17 +44,17 @@ ls
 echo "8==============================================="
 # md5 校验，输出至 “tmp.txt”。
 echo "cNAME-$cMANE"
-md5sum "$cNAME" > "./tmp.txt"
+md5sum "$cNAME" > "tmp.txt"
 cat "tmp.txt"
 ls
 echo "9==============================================="
 # 清除 “tmp.txt” 中多余的内容，并生成 “$mNAME”。
 echo "cNAME-$cMANE"
-sed "s/$cNAME//" "./tmp.txt" > "./tmp.txt"
+sed "s/$cNAME//" "tmp.txt">"tmp.txt"
 cat "tmp.txt"
 ls
 echo "mNAME-$mMANE"
-sed 's/  //' "./tmp.txt" > "./$mNAME"
+sed 's/  //' "./tmp.txt">"./$mNAME"
 cat "$mNAME"
 ls
 echo "10=============================================="
