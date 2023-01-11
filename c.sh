@@ -47,17 +47,23 @@ ls
 echo "8==============================================="
 # md5 校验，输出至 “tmp.txt”。
 echo $cNAME
-md5sum "$cNAME" > "tmp.txt"
+md5sum "$cNAME">"tmp.txt"
 cat "tmp.txt"
 ls
 echo "9==============================================="
 # 清除 “tmp.txt” 中多余的内容，并生成 “$mNAME”。
 echo $cNAME
+echo "_____"
+sed "s/$cNAME//" "tmp.txt"
 sed "s/$cNAME//" "tmp.txt">"tmp.txt"
+echo "_____"
 cat "tmp.txt"
 ls
 echo "mNAME-$mNANE"
+echo "_____"
+sed 's/  //' "./tmp.txt"
 sed 's/  //' "./tmp.txt">"./$mNAME"
+echo "_____"
 cat "$mNAME"
 ls
 echo "10=============================================="
