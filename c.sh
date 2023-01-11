@@ -54,15 +54,18 @@ echo "9==============================================="
 # 清除 “tmp.txt” 中多余的内容，并生成 “$mNAME”。
 echo $cNAME
 echo "_____"
-sed "s/"  $cNAME"//" "tmp.txt"
+sed "s/$cNAME//" "tmp.txt"
 sed "s/$cNAME//" "tmp.txt">"./$mNAME"
 echo "_____"
 cat "$mNAME"
 cat "tmp.txt"
 ls
 echo "_____"
-sed 's/  //g' "./tmp.txt"
+cat "$mNAME" | sed 's/ //g'
+cat "$mNAME" | sed 's/ //g'>"tmp.txt"
 echo "tmp.txt">"./$mNAME"
+cat "$mNAME"
+cat "tmp.txt"
 echo "_____"
 cat "$mNAME"
 ls
