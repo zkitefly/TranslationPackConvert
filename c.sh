@@ -4,8 +4,8 @@ cd './tmp'
 cat './pack.mcmeta' | jq -M "."pack"."pack_format"=$cV" > './tmp.txt'
 cp './tmp.txt' './pack.mcmeta'
 rm './tmp.txt'
-zip "$cNAME" *
-md5sum "./$cNAME" > "./$mNAME"
+zip $cNAME *
+md5sum "$cNAME" > "./$mNAME"
 sed 's/  //' > "./$mNAME"
 sed "s/$cNAME//" > "./$mNAME"
 mv "$cNAME" ../
