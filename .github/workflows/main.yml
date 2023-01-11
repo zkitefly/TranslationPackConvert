@@ -210,7 +210,7 @@ jobs:
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
           fi
-- name: Convert resources 1.16-Fabric -> 1.17-Fabric
+      - name: Convert resources 1.16-Fabric -> 1.17-Fabric
         id: convert_resources5
         shell: bash
         run: |
@@ -249,7 +249,7 @@ jobs:
             "
           fi
       - name: Push changes
-        if: steps.convert_resourcesz.outputs.changed == 'true' || steps.convert_resourcesz1.outputs.changed == 'true' || steps.convert_resources2.outputs.changed == 'true' || steps.convert_resources3.outputs.changed == 'true' || steps.convert_resources4.outputs.changed == 'true'
+        if: steps.convert_resources.outputs.changed == 'true' || steps.convert_resources1.outputs.changed == 'true' || steps.convert_resources2.outputs.changed == 'true' || steps.convert_resources3.outputs.changed == 'true' || steps.convert_resources4.outputs.changed == 'true' || steps.convert_resources5.outputs.changed == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
