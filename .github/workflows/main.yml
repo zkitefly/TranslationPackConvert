@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths: 
       - '.github/workflows/main.yml'
+      - 'c.sh'
  schedule:
    - cron: '0 * * * *'
  repository_dispatch:
