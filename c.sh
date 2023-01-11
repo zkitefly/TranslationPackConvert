@@ -64,7 +64,7 @@ echo "_____"
 cat "$mNAME" | sed 's/ //g'
 cat "$mNAME" | sed 's/ //g' > "tmp.txt"
 echo "_____"
-echo "tmp.txt">"./$mNAME"
+cat "tmp.txt" > "./$mNAME"
 cat "$mNAME"
 cat "tmp.txt"
 ls
