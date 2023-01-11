@@ -48,12 +48,11 @@ jobs:
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
-            echo '::set-output name=changed::false'
             echo 'changed=false' >> $GITHUB_OUTPUT
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Update resources $CM
+            git commit -m "Convert resources $CM
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -86,12 +85,11 @@ jobs:
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
-            echo '::set-output name=changed::false'
             echo 'changed=false' >> $GITHUB_OUTPUT
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Update resources $CM
+            git commit -m "Convert resources $CM
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -124,7 +122,6 @@ jobs:
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
-            echo '::set-output name=changed::false'
             echo 'changed=false' >> $GITHUB_OUTPUT
           else
             # Changes detected
@@ -162,12 +159,11 @@ jobs:
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
-            echo '::set-output name=changed::false'
             echo 'changed=false' >> $GITHUB_OUTPUT
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Update resources $CM
+            git commit -m "Convert resources $CM
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -200,12 +196,11 @@ jobs:
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
-            echo '::set-output name=changed::false'
             echo 'changed=false' >> $GITHUB_OUTPUT
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Update resources $CM
+            git commit -m "Convert resources $CM
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -238,7 +233,6 @@ jobs:
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
-            echo '::set-output name=changed::false'
             echo 'changed=false' >> $GITHUB_OUTPUT
           else
             # Changes detected
