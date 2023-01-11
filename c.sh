@@ -20,7 +20,8 @@ ls
 echo "4==============================================="
 # 转换。
 echo "cV-$cV"
-cat './pack.mcmeta' | jq -M "."pack"."pack_format"=$cV" > './tmp.txt'
+echo > './tmp.txt'
+cat 'pack.mcmeta' | jq -M "."pack"."pack_format"=$cV" > 'tmp.txt'
 cat "./tmp"
 echo "5==============================================="
 # 将 “tmp.txt” 覆盖至 “pack.mcmeta”。
