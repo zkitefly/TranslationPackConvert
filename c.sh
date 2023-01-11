@@ -39,18 +39,18 @@ rm 'tmp.txt'
 ls
 echo "7==============================================="
 # 打包 zip。
-echo "cNAME-$cNANE"
+echo "cNAME-$cNAME"
 zip -q $cNAME *
 ls
 echo "8==============================================="
 # md5 校验，输出至 “tmp.txt”。
-echo "cNAME-$cNANE"
+echo "cNAME-$cNAME"
 md5sum "$cNAME" > "tmp.txt"
 cat "tmp.txt"
 ls
 echo "9==============================================="
 # 清除 “tmp.txt” 中多余的内容，并生成 “$mNAME”。
-echo "cNAME-$cNANE"
+echo "cNAME-$cNAME"
 sed "s/$cNAME//" "tmp.txt">"tmp.txt"
 cat "tmp.txt"
 ls
@@ -60,7 +60,7 @@ cat "$mNAME"
 ls
 echo "10=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
-echo "cNAME-$cNANE"
+echo "cNAME-$cNAME"
 mv "$cNAME" ../
 echo "mNAME-$mNANE"
 mv "$mNAME" ../
