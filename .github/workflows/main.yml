@@ -26,8 +26,6 @@ jobs:
         shell: bash
         run: |
           # 转换
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           echo '=======================环境变量设置========================='
           # 下载链接前缀，后面不得加 /
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
@@ -46,6 +44,8 @@ jobs:
           echo '==========================================================='
           # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
           ./clean.sh
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
@@ -63,8 +63,6 @@ jobs:
         shell: bash
         run: |
           # 转换
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           echo '=======================环境变量设置========================='
           # 下载链接前缀，后面不得加 /
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
@@ -83,6 +81,8 @@ jobs:
           echo '==========================================================='
           # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
           ./clean.sh
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
@@ -100,8 +100,6 @@ jobs:
         shell: bash
         run: |
           # 转换
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           echo '=======================环境变量设置========================='
           # 下载链接前缀，后面不得加 /
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
@@ -120,6 +118,8 @@ jobs:
           echo '==========================================================='
           # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
           ./clean.sh
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
@@ -137,8 +137,6 @@ jobs:
         shell: bash
         run: |
           # 转换
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           echo '=======================环境变量设置========================='
           # 下载链接前缀，后面不得加 /
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
@@ -157,6 +155,8 @@ jobs:
           echo '==========================================================='
           # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
           ./clean.sh
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
@@ -174,8 +174,6 @@ jobs:
         shell: bash
         run: |
           # 转换
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           echo '=======================环境变量设置========================='
           # 下载链接前缀，后面不得加 /
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
@@ -194,6 +192,8 @@ jobs:
           echo '==========================================================='
           # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
           ./clean.sh
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
@@ -211,8 +211,6 @@ jobs:
         shell: bash
         run: |
           # 转换
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           echo '=======================环境变量设置========================='
           # 下载链接前缀，后面不得加 /
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
@@ -231,6 +229,8 @@ jobs:
           echo '==========================================================='
           # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
           ./clean.sh
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
