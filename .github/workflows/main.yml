@@ -1,4 +1,4 @@
-name: update_history
+name: Convert resources
 on:
  pull_request:
     branches: [main]
@@ -20,34 +20,69 @@ jobs:
         run: |
           sudo apt install jq
           jq --version
-      - name: Convert resources 1.18 -> 1.19.1/2
-        id: convert_resources1
+      - name: Convert resources 1.18 -> 1.19.3
+        id: convert_resources
         shell: bash
         run: |
+          # 转换
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           echo '=======================环境变量设置========================='
-          #下载链接前缀，后面不得加 /
+          # 下载链接前缀，后面不得加 /
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAMR=Minecraft-Mod-Language-Modpack-1-18.zip$dNAME"
           # 转换的名字，带 .zip
-          export "cNAMR=Minecraft-Mod-Language-Modpack-1-18t1.19.1o2.zip$NAME"
+          export "cNAMR=Minecraft-Mod-Language-Modpack-1-18T1.19.3.zip$NAME"
           # 修改资源包 pack_format 的 value
-          export "cV=9$NAME"
+          export "cV=12$NAME"
           # 校验文件名字，带 .md5
-          export "mNAME=1-18t1.19.1o2.md5$NAME"
+          export "mNAME=1.18T1.19.3.md5$NAME"
           # commit 标题名称，Convert resources + XXX
-          export "CM=1.18 to 1.19$CM"
+          export "CM=1.18 to 1.19.3$CM"
           echo '==========================================================='
           ./c.sh
           echo '==========================================================='
-          # 清除，以防沾染其他工作流
-          export dLINK=$dLINK
-          export NAME=$NAME
-          export dNAMR=$dNAMR
-          export cV=$cV
-          export cNAMR=$cNAMR
+          # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
+          ./clean.sh
+          git add -A
+          if git diff-index --quiet HEAD; then
+            # No changes
+            echo '::set-output name=changed::false'
+            echo 'changed=false' >> $GITHUB_OUTPUT
+          else
+            # Changes detected
+            echo 'changed=true' >> $GITHUB_OUTPUT
+            git commit -m "Update resources $CM
+
+          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
+            "
+          fi
+      - name: Convert resources 1.18 -> 1.19.1/2
+        id: convert_resources1
+        shell: bash
+        run: |
+          # 转换
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          echo '=======================环境变量设置========================='
+          # 下载链接前缀，后面不得加 /
+          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
+          # 下载文件的名字，带 .zip
+          export "dNAMR=Minecraft-Mod-Language-Modpack-1-18.zip$dNAME"
+          # 转换的名字，带 .zip
+          export "cNAMR=Minecraft-Mod-Language-Modpack-1-18T1.19.1o2.zip$NAME"
+          # 修改资源包 pack_format 的 value
+          export "cV=9$NAME"
+          # 校验文件名字，带 .md5
+          export "mNAME=1.18T1.19.1o2.md5$NAME"
+          # commit 标题名称，Convert resources + XXX
+          export "CM=1.18 to 1.19.1/2$CM"
+          echo '==========================================================='
+          ./c.sh
+          echo '==========================================================='
+          # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
+          ./clean.sh
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
@@ -65,30 +100,141 @@ jobs:
         id: convert_resources2
         shell: bash
         run: |
+          # 转换
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           echo '=======================环境变量设置========================='
-          #下载链接前缀，后面不得加 /
+          # 下载链接前缀，后面不得加 /
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAMR=Minecraft-Mod-Language-Modpack-1-16.zip$dNAME"
           # 转换的名字，带 .zip
-          export "cNAMR=Minecraft-Mod-Language-Modpack-1-16t1.17.zip$NAME"
+          export "cNAMR=Minecraft-Mod-Language-Modpack-1-16T1.17.zip$NAME"
           # 修改资源包 pack_format 的 value
           export "cV=7$NAME"
           # 校验文件名字，带 .md5
-          export "mNAME=1-16t1.17.md5$NAME"
+          export "mNAME=1-16T1.17.md5$NAME"
           # commit 标题名称，Convert resources + XXX
-          export "CM=1.16->1.17$CM"
+          export "CM=1.16 -> 1.17$CM"
           echo '==========================================================='
           ./c.sh
           echo '==========================================================='
-          # 清除，以防沾染其他工作流
-          export dLINK=$dLINK
-          export NAME=$NAME
-          export dNAMR=$dNAMR
-          export cV=$cV
-          export cNAMR=$cNAMR
+          # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
+          ./clean.sh
+          git add -A
+          if git diff-index --quiet HEAD; then
+            # No changes
+            echo '::set-output name=changed::false'
+            echo 'changed=false' >> $GITHUB_OUTPUT
+          else
+            # Changes detected
+            echo 'changed=true' >> $GITHUB_OUTPUT
+            git commit -m "Convert resources $CM
+
+          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
+            "
+          fi
+      - name: Convert resources 1.18-Fabric -> 1.19.3-Fabric
+        id: convert_resources3
+        shell: bash
+        run: |
+          # 转换
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          echo '=======================环境变量设置========================='
+          # 下载链接前缀，后面不得加 /
+          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
+          # 下载文件的名字，带 .zip
+          export "dNAMR=Minecraft-Mod-Language-Modpack-1-18.zip$dNAME"
+          # 转换的名字，带 .zip
+          export "cNAMR=Minecraft-Mod-Language-Modpack-1-18-FabricT1.19.3-Fabric.zip$NAME"
+          # 修改资源包 pack_format 的 value
+          export "cV=12$NAME"
+          # 校验文件名字，带 .md5
+          export "mNAME=1.18-FabricT1.19.3-Fabric.md5$NAME"
+          # commit 标题名称，Convert resources + XXX
+          export "CM=1.18-Fabric to 1.19.3-Fabric$CM"
+          echo '==========================================================='
+          ./c.sh
+          echo '==========================================================='
+          # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
+          ./clean.sh
+          git add -A
+          if git diff-index --quiet HEAD; then
+            # No changes
+            echo '::set-output name=changed::false'
+            echo 'changed=false' >> $GITHUB_OUTPUT
+          else
+            # Changes detected
+            echo 'changed=true' >> $GITHUB_OUTPUT
+            git commit -m "Update resources $CM
+
+          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
+            "
+          fi
+      - name: Convert resources 1.18-Fabric -> 1.19.1/2-Fabric
+        id: convert_resources4
+        shell: bash
+        run: |
+          # 转换
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          echo '=======================环境变量设置========================='
+          # 下载链接前缀，后面不得加 /
+          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
+          # 下载文件的名字，带 .zip
+          export "dNAMR=Minecraft-Mod-Language-Modpack-1-18-Fabric.zip$dNAME"
+          # 转换的名字，带 .zip
+          export "cNAMR=Minecraft-Mod-Language-Modpack-1-18-FabricT1.19.1o2-Fabric.zip$NAME"
+          # 修改资源包 pack_format 的 value
+          export "cV=9$NAME"
+          # 校验文件名字，带 .md5
+          export "mNAME=1.18-FabricT1.19.1o2-Fabric.md5$NAME"
+          # commit 标题名称，Convert resources + XXX
+          export "CM=1.18-Fabric to 1.19.1/2-Fabric$CM"
+          echo '==========================================================='
+          ./c.sh
+          echo '==========================================================='
+          # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
+          ./clean.sh
+          git add -A
+          if git diff-index --quiet HEAD; then
+            # No changes
+            echo '::set-output name=changed::false'
+            echo 'changed=false' >> $GITHUB_OUTPUT
+          else
+            # Changes detected
+            echo 'changed=true' >> $GITHUB_OUTPUT
+            git commit -m "Update resources $CM
+
+          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
+            "
+          fi
+- name: Convert resources 1.16-Fabric -> 1.17-Fabric
+        id: convert_resources5
+        shell: bash
+        run: |
+          # 转换
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          echo '=======================环境变量设置========================='
+          # 下载链接前缀，后面不得加 /
+          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
+          # 下载文件的名字，带 .zip
+          export "dNAMR=Minecraft-Mod-Language-Modpack-1-16-Fabric.zip$dNAME"
+          # 转换的名字，带 .zip
+          export "cNAMR=Minecraft-Mod-Language-Modpack-1-16FabricT1.17-Fabric.zip$NAME"
+          # 修改资源包 pack_format 的 value
+          export "cV=7$NAME"
+          # 校验文件名字，带 .md5
+          export "mNAME=1.16-FabricT1.17-Fabric.md5$NAME"
+          # commit 标题名称，Convert resources + XXX
+          export "CM=1.16-Fabric -> 1.17-Fabric$CM"
+          echo '==========================================================='
+          ./c.sh
+          echo '==========================================================='
+          # 清除，以防沾染其他工作流，若环境变脸设置添加，请在 clean.sh 中一并添加
+          ./clean.sh
           git add -A
           if git diff-index --quiet HEAD; then
             # No changes
@@ -103,12 +249,8 @@ jobs:
             "
           fi
       - name: Push changes
-        if: steps.convert_resources.outputs.changed == 'true' || steps.convert_resources1.outputs.changed == 'true' || steps.convert_resources2.outputs.changed == 'true'
+        if: steps.convert_resourcesz.outputs.changed == 'true' || steps.convert_resourcesz1.outputs.changed == 'true' || steps.convert_resources2.outputs.changed == 'true' || steps.convert_resources3.outputs.changed == 'true' || steps.convert_resources4.outputs.changed == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-        # shell: bash
-        # run: |
-        #   git push origin ${{ github.ref }}
-        # 
