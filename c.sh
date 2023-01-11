@@ -54,17 +54,11 @@ echo "9==============================================="
 # 清除 “tmp.txt” 中多余的内容，并生成 “$mNAME”。
 echo $cNAME
 echo "_____"
-sed "s/$cNAME//" "tmp.txt"
-sed "s/$cNAME//" "tmp.txt">"tmp.txt"
-echo "_____"
-cat "tmp.txt"
-ls
-echo "mNAME-$mNANE"
-echo "_____"
-sed 's/  //' "./tmp.txt"
-sed 's/  //' "./tmp.txt">"./$mNAME"
+sed "s/"  $cNAME"//" "tmp.txt"
+sed "s/$cNAME//" "tmp.txt">"./$mNAME"
 echo "_____"
 cat "$mNAME"
+cat "tmp.txt"
 ls
 echo "10=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
