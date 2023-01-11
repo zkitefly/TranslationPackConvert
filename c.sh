@@ -1,5 +1,4 @@
 wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAMR"
-if [-e "$dNAME"]; then
  unzip -d './tmp' "./$dNAME"
  cd './tmp'
  cat './pack.mcmeta' | jq -M "."pack"."pack_format"=$cV" > './tmp.txt'
@@ -14,6 +13,3 @@ if [-e "$dNAME"]; then
  cd ../
  rm -r './tmp'
  mv "./$cNAME" './files'
-else
- echo "error: File $dNAME does not exist"
-fi
