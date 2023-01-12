@@ -43,9 +43,10 @@ jobs:
             echo 'changed=false' >> $GITHUB_OUTPUT
           else
             # Changes detected
-            echo 'changed=falst' >> $GITHUB_OUTPUT
+            echo 'changed=true' >> $GITHUB_OUTPUT
             md5sum *.zip > md5.txt
           fi
+          echo '=============================================================='
           ./clean-c.sh
       - name: install jq & set time
         if: steps.check_updata.outputs.changed == 'true'
