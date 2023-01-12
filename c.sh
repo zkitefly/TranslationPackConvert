@@ -45,10 +45,10 @@ echo $cNAME
 zip -q $cNAME -r *
 ls
 echo "8-9============================================="
-# md5 校验，输出至 “tmp.txt”。
+# md5 校验，输出至 “$mNAME”。
 echo $cNAME
 # https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/blob/5a2c1647e597ab0ffa7d203d7f06efbe98fcac73/zip.py#L38
-md5sum -b "$cNAME" | cut -c1-32 > "./$mNAME" 
+md5sum -b "$cNAME" | cut -c1-32 > "./$mNAME"
 ls
 echo "10=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
