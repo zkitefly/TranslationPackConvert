@@ -58,7 +58,7 @@ jobs:
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（$date '+%Y-%m-%d %H:%M:%S'）
+            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -98,7 +98,7 @@ jobs:
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（$date '+%Y-%m-%d %H:%M:%S'）
+            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -138,7 +138,7 @@ jobs:
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（$date '+%Y-%m-%d %H:%M:%S'）
+            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -178,7 +178,7 @@ jobs:
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（$date '+%Y-%m-%d %H:%M:%S'）
+            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -218,7 +218,7 @@ jobs:
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（$date '+%Y-%m-%d %H:%M:%S'）
+            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -258,7 +258,7 @@ jobs:
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（$date '+%Y-%m-%d %H:%M:%S'）
+            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
@@ -306,7 +306,7 @@ jobs:
 #          else
 #            # Changes detected
 #            echo 'changed=true' >> $GITHUB_OUTPUT
-#            git commit -m "Convert resources $CM（$date '+%Y-%m-%d %H:%M:%S'）
+#            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 #
 #          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
 #            "
