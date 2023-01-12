@@ -4,6 +4,26 @@
 
 ![](https://api.onedrive.com/v1.0/shares/s!AiSrzi-vYVoBhB8DB6RdiwO8PFp9/root/content)
 
+## 协议
+
+本仓库采用 [知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/)（[简体中文](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)） 进行许可，协议全文可在 [此处](./LICENSE) 查看。
+
+## 下载地址
+
+|
+
+|
+
+|
+
+### **目前 [自动汉化更新非长期支持版](https://www.mcmod.cn/class/8067.html) 模组使用本仓库为镜像源，该模组会在玩家打开游戏时会自动下载本仓库的资源包随后自动装载上，并切换语言为简体中文，以此实现对游戏内容的汉化。可以前往模组页面下载模组。**
+
+|
+
+|
+
+|
+
 *注：下方的地址使用到 ghproxy.net & zzko.cn CDN & github.io & staticaly.com & iqiq.io & ghproxy.com加速。*
 
 [**本仓库所含的 zip 文件**](https://zkitefly.github.io/TranslationPackConvert/files)
