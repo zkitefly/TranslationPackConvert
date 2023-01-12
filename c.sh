@@ -3,7 +3,7 @@ echo "1==============================================="
 # 下载要转换的资源包。
 echo "dLINK-$dLINK"
 echo "dNAME-$dNAME"
-wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME"
+# wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME"
 ls
 echo "2==============================================="
 # 创建 “tmp” 文件夹。
@@ -31,9 +31,9 @@ ls
 cat "tmp.txt"
 echo "5==============================================="
 # 将 “tmp.txt” 覆盖至 “pack.mcmeta”。
-cp 'tmp.txt' 'pack.mcmeta'
+cat 'tmp.txt' > 'pack.mcmeta'
 echo >> "park.mcmeta"
-cat "park.mcmeta"
+cat "pack.mcmeta"
 ls
 echo "6==============================================="
 # 删除 “tmp.txt”。
@@ -47,7 +47,7 @@ ls
 echo "8==============================================="
 # md5 校验，输出至 “tmp.txt”。
 echo $cNAME
-md5sum "$cNAME" > "tmp.txt"
+md5sum -z "$cNAME" > "tmp.txt"
 cat "tmp.txt"
 ls
 echo "9==============================================="
@@ -90,6 +90,5 @@ mv "./$cNAME" './files'
 echo "mNAME-$mNAME"
 mv "./$mNAME" './files'
 ls "./files"
-rm *.zip
 ls
 echo "Done============================================"

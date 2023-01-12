@@ -8,8 +8,8 @@ on:
       - '.github/workflows/convert.yml'
       - 'c.sh'
  schedule:
-   # 每三小时更新一次
-   - cron: '0 */6 * * *'
+   # 每一小时更新一次
+   - cron: '0 */1 * * *'
  repository_dispatch:
    types: [update_resources]
 jobs:
@@ -17,20 +17,48 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: check for updates
+        id: check_updata
+        shell: bash
+        run: |
+          echo '======================= 环境变量设置 ========================='
+          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
+          # 此处要填写以下工作流的 “dNAME” & “mNAME”
+          # Convert resources 1.18 -> 1.19.3 1.19.1/2
+          export "dNAME1=Minecraft-Mod-Language-Modpack-1-18.zip$dNAME1"
+          # Convert resources 1.16
+          export "dNAME2=Minecraft-Mod-Language-Modpack-1-16.zip$dNAME2"
+          # Convert resources 1.18-Fabric
+          export "dNAME3=Minecraft-Mod-Language-Modpack-1-18-Fabric.zip$dNAME3"
+          # Convert resources 1.16-Fabric
+          export "dNAME4=Minecraft-Mod-Language-Modpack-1-16-Fabric.zip$dNAME4"
+          echo '========================== 检查区 ==========================='
+          wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME1"
+          wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME2"
+          wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME3"
+          wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME4"
+          if md5sum -c --quiet "md5.txt"; then
+            # No changes
+            echo 'changed=false' >> $GITHUB_OUTPUT
+          else
+            # Changes detected
+            echo 'changed=falst' >> $GITHUB_OUTPUT
+            md5sum *.zip > md5.txt
+          fi
+          ./clean-c.sh
       - name: install jq & set time
+        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           sudo apt install jq
           jq --version
           sudo timedatectl set-timezone 'Asia/Shanghai'
       - name: Convert resources 1.18 -> 1.19.3
-        id: convert_resources
+        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           # 转换
           echo '======================= 环境变量设置 ========================='
-          # 下载链接前缀，后面不得加 /
-          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAME=Minecraft-Mod-Language-Modpack-1-18.zip$dNAME"
           # 转换的名字，带 .zip
@@ -52,25 +80,16 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          if git diff-index --quiet HEAD; then
-            # No changes
-            echo 'changed=false' >> $GITHUB_OUTPUT
-          else
-            # Changes detected
-            echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
+          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
-          fi
       - name: Convert resources 1.18 -> 1.19.1/2
-        id: convert_resources1
+        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           # 转换
           echo '======================= 环境变量设置 ========================='
-          # 下载链接前缀，后面不得加 /
-          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAME=Minecraft-Mod-Language-Modpack-1-18.zip$dNAME"
           # 转换的名字，带 .zip
@@ -92,25 +111,16 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          if git diff-index --quiet HEAD; then
-            # No changes
-            echo 'changed=false' >> $GITHUB_OUTPUT
-          else
-            # Changes detected
-            echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
+          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
-          fi
       - name: Convert resources 1.16 -> 1.17
-        id: convert_resources2
+        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           # 转换
           echo '======================= 环境变量设置 ========================='
-          # 下载链接前缀，后面不得加 /
-          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAME=Minecraft-Mod-Language-Modpack-1-16.zip$dNAME"
           # 转换的名字，带 .zip
@@ -132,25 +142,16 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          if git diff-index --quiet HEAD; then
-            # No changes
-            echo 'changed=false' >> $GITHUB_OUTPUT
-          else
-            # Changes detected
-            echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
+          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
-          fi
       - name: Convert resources 1.18-Fabric -> 1.19.3-Fabric
-        id: convert_resources3
+        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           # 转换
           echo '======================= 环境变量设置 ========================='
-          # 下载链接前缀，后面不得加 /
-          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAME=Minecraft-Mod-Language-Modpack-1-18-Fabric.zip$dNAME"
           # 转换的名字，带 .zip
@@ -172,25 +173,16 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          if git diff-index --quiet HEAD; then
-            # No changes
-            echo 'changed=false' >> $GITHUB_OUTPUT
-          else
-            # Changes detected
-            echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
+          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
-          fi
       - name: Convert resources 1.18-Fabric -> 1.19.1/2-Fabric
-        id: convert_resources4
+        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           # 转换
           echo '======================= 环境变量设置 ========================='
-          # 下载链接前缀，后面不得加 /
-          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAME=Minecraft-Mod-Language-Modpack-1-18-Fabric.zip$dNAME"
           # 转换的名字，带 .zip
@@ -212,25 +204,16 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          if git diff-index --quiet HEAD; then
-            # No changes
-            echo 'changed=false' >> $GITHUB_OUTPUT
-          else
-            # Changes detected
-            echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
+          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
-          fi
       - name: Convert resources 1.16-Fabric -> 1.17-Fabric
-        id: convert_resources5
+        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           # 转换
           echo '======================= 环境变量设置 ========================='
-          # 下载链接前缀，后面不得加 /
-          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAME=Minecraft-Mod-Language-Modpack-1-16-Fabric.zip$dNAME"
           # 转换的名字，带 .zip
@@ -252,25 +235,16 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          if git diff-index --quiet HEAD; then
-            # No changes
-            echo 'changed=false' >> $GITHUB_OUTPUT
-          else
-            # Changes detected
-            echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
+          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
-          fi
       - name: Convert resources 1.16-Fabric -> 1.15-Fabric
-        id: convert_resources6
+        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           # 转换
           echo '======================= 环境变量设置 ========================='
-          # 下载链接前缀，后面不得加 /
-          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAME=Minecraft-Mod-Language-Modpack-1-16-Fabric.zip$dNAME"
           # 转换的名字，带 .zip
@@ -292,25 +266,16 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          if git diff-index --quiet HEAD; then
-            # No changes
-            echo 'changed=false' >> $GITHUB_OUTPUT
-          else
-            # Changes detected
-            echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
+          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
-          fi
       - name: Convert resources 1.16 -> 1.15
-        id: convert_resources7
+        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           # 转换
           echo '======================= 环境变量设置 ========================='
-          # 下载链接前缀，后面不得加 /
-          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
           # 下载文件的名字，带 .zip
           export "dNAME=Minecraft-Mod-Language-Modpack-1-16.zip$dNAME"
           # 转换的名字，带 .zip
@@ -332,27 +297,20 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          if git diff-index --quiet HEAD; then
-            # No changes
-            echo 'changed=false' >> $GITHUB_OUTPUT
-          else
-            # Changes detected
-            echo 'changed=true' >> $GITHUB_OUTPUT
-            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
+          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
-          fi
       - name: Push changes
         # 注意：在新增一个转换时，一定要在下方的 if 规则，否则当该资源包更新时无法检测到它！
-        if: steps.convert_resources.outputs.changed == 'true' || steps.convert_resources1.outputs.changed == 'true' || steps.convert_resources2.outputs.changed == 'true' || steps.convert_resources3.outputs.changed == 'true' || steps.convert_resources4.outputs.changed == 'true' || steps.convert_resources5.outputs.changed == 'true' || steps.convert_resources6.outputs.changed == 'true' || steps.convert_resources7.outputs.changed == 'true'
+        if: steps.check_updata.outputs.changed == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 #模板：
 #      - name: Convert resources  -> 
-#        id: convert_resources
+#        if: steps.check_updata.outputs.changed == 'true'
 #        shell: bash
 #        run: |
 #          # 转换
@@ -380,14 +338,7 @@ jobs:
 #          git config --local user.name "github-actions[bot]"
 #          git config --local user.email "github-actions[bot]@users.noreply.github.com"
 #          git add -A
-#          if git diff-index --quiet HEAD; then
-#            # No changes
-#            echo 'changed=false' >> $GITHUB_OUTPUT
-#          else
-#            # Changes detected
-#            echo 'changed=true' >> $GITHUB_OUTPUT
-#            git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
+#          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
 #
 #          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
 #            "
-#          fi
