@@ -8,6 +8,10 @@
 
 本仓库采用 [知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/)（[简体中文](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)） 进行许可，协议全文可在 [此处](./LICENSE) 查看。
 
+## 资源列表
+
+### [**点击此处查看**](./PackFormatList.md)
+
 ## 下载地址
 
 |
