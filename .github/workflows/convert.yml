@@ -263,7 +263,7 @@ jobs:
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
           fi
-      - name: Convert resources 1.16-Fabric -> 1.17-Fabric
+      - name: Convert resources 1.16 -> 1.15
         id: convert_resources5
         shell: bash
         run: |
@@ -303,7 +303,7 @@ jobs:
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
           fi
-      - name: Convert resources 1.16-Fabric -> 1.17-Fabric
+      - name: Convert resources 1.16-Fabric -> 1.15-Fabric
         id: convert_resources7
         shell: bash
         run: |
