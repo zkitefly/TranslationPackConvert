@@ -8,7 +8,7 @@ on:
       - '.github/workflows/convert.yml'
       - 'c.sh'
  schedule:
-   - cron: '0 */3 * * *'
+   - cron: '0 */5 * * *'
  repository_dispatch:
    types: [update_resources]
 jobs:
