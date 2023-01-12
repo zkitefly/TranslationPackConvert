@@ -49,8 +49,9 @@ echo "8-9============================================="
 echo $cNAME
 # https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/blob/5a2c1647e597ab0ffa7d203d7f06efbe98fcac73/zip.py#L38
 md5sum -b "$cNAME">"tmp.txt"
-cut "tmp.txt" -z -c1-32>"$mNAME"
+cut "tmp.txt" -c1-32>"$mNAME"
 cat "$mNAME"
+rm "tmp.txt"
 ls
 echo "10=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
