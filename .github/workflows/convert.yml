@@ -263,9 +263,89 @@ jobs:
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
           fi
+      - name: Convert resources 1.16-Fabric -> 1.15-Fabric
+        id: convert_resources6
+        shell: bash
+        run: |
+          # 转换
+          echo '======================= 环境变量设置 ========================='
+          # 下载链接前缀，后面不得加 /
+          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
+          # 下载文件的名字，带 .zip
+          export "dNAME=Minecraft-Mod-Language-Modpack-1-16-Fabric.zip$dNAME"
+          # 转换的名字，带 .zip
+          export "cNAME=Minecraft-Mod-Language-Modpack-1-16-FabricT1-15-Fabric.zip$cNAME"
+          # 修改资源包 pack_format 的 value
+          export "cV=5$cV"
+          # 校验文件名字，带 .md5
+          export "mNAME=1.16-fabrict1.15-fabric.md5$mNAME"
+          # commit 标题名称，Convert resources + XXX
+          export "CM=1.16-Fabric -> 1.15-Fabric$CM"
+          echo '======================= 运行修改脚本 ========================='
+          echo "========================== 预览 ============================="
+          cat "c.sh"
+          echo "============================================================"
+          ./c.sh
+          echo '============================================================'
+          # 清除环境变量，以防沾染其他工作流，若环境变量设置添加了新的设置，请在 clean.sh 中一并添加
+          ./clean.sh
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff-index --quiet HEAD; then
+            # No changes
+            echo 'changed=false' >> $GITHUB_OUTPUT
+          else
+            # Changes detected
+            echo 'changed=true' >> $GITHUB_OUTPUT
+            git commit -m "Convert resources $CM（date '+%Y-%m-%d %H:%M:%S'）
+
+          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
+            "
+          fi
+      - name: Convert resources 1.16 -> 1.15
+        id: convert_resources7
+        shell: bash
+        run: |
+          # 转换
+          echo '======================= 环境变量设置 ========================='
+          # 下载链接前缀，后面不得加 /
+          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
+          # 下载文件的名字，带 .zip
+          export "dNAME=Minecraft-Mod-Language-Modpack-1-16.zip$dNAME"
+          # 转换的名字，带 .zip
+          export "cNAME=Minecraft-Mod-Language-Modpack-1-16T1-15.zip$cNAME"
+          # 修改资源包 pack_format 的 value
+          export "cV=5$cV"
+          # 校验文件名字，带 .md5
+          export "mNAME=1.16t1.15.md5$mNAME"
+          # commit 标题名称，Convert resources + XXX
+          export "CM=1.16 -> 1.15$CM"
+          echo '======================= 运行修改脚本 ========================='
+          echo "========================== 预览 ============================="
+          cat "c.sh"
+          echo "============================================================"
+          ./c.sh
+          echo '============================================================'
+          # 清除环境变量，以防沾染其他工作流，若环境变量设置添加了新的设置，请在 clean.sh 中一并添加
+          ./clean.sh
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff-index --quiet HEAD; then
+            # No changes
+            echo 'changed=false' >> $GITHUB_OUTPUT
+          else
+            # Changes detected
+            echo 'changed=true' >> $GITHUB_OUTPUT
+            git commit -m "Convert resources $CM（date '+%Y-%m-%d %H:%M:%S'）
+
+          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
+            "
+          fi
       - name: Push changes
         # 注意：在新增一个转换时，一定要在下方的 if 规则，否则当该资源包更新时无法检测到它！
-        if: steps.convert_resources.outputs.changed == 'true' || steps.convert_resources1.outputs.changed == 'true' || steps.convert_resources2.outputs.changed == 'true' || steps.convert_resources3.outputs.changed == 'true' || steps.convert_resources4.outputs.changed == 'true' || steps.convert_resources5.outputs.changed == 'true'
+        if: steps.convert_resources.outputs.changed == 'true' || steps.convert_resources1.outputs.changed == 'true' || steps.convert_resources2.outputs.changed == 'true' || steps.convert_resources3.outputs.changed == 'true' || steps.convert_resources4.outputs.changed == 'true' || steps.convert_resources5.outputs.changed == 'true' || steps.convert_resources6.outputs.changed == 'true' || steps.convert_resources7.outputs.changed == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
