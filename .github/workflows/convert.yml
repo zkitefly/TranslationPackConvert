@@ -16,11 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: install jq
+      - name: install jq & set time
         shell: bash
         run: |
           sudo apt install jq
           jq --version
+          sudo timedatectl set-timezone 'Asia/Shanghai'
       - name: Convert resources 1.18 -> 1.19.3
         id: convert_resources
         shell: bash
