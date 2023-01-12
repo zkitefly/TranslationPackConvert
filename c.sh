@@ -47,7 +47,7 @@ ls
 echo "8==============================================="
 # md5 校验，输出至 “tmp.txt”。
 echo $cNAME
-md5sum -z "$cNAME" > "tmp.txt"
+md5sum "$cNAME" > "tmp.txt"
 cat "tmp.txt"
 ls
 echo "9==============================================="
@@ -61,10 +61,10 @@ cat "$mNAME"
 cat "tmp.txt"
 ls
 echo "_____"
+cat "$mNAME" | sed '2d' > "tmp.txt"
 cat "$mNAME" | sed 's/ //g'
-cat "$mNAME" | sed 's/ //g' > "tmp.txt"
+cat "$mNAME" | sed 's/ //g' > "$mNAME"
 echo "_____"
-cat "tmp.txt" > "./$mNAME"
 cat "$mNAME"
 cat "tmp.txt"
 ls
