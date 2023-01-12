@@ -23,7 +23,7 @@ jobs:
         run: |
           echo '======================= 环境变量设置 ========================='
           export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
-          # 此处要填写以下工作流的“dNAME”
+          # 此处要填写以下工作流的 “dNAME”
           # Convert resources 1.18 -> 1.19.3 1.19.1/2
           export "dNAME1=Minecraft-Mod-Language-Modpack-1-18.zip$dNAME1"
           # Convert resources 1.16 -> 1.17 1.15
