@@ -37,7 +37,7 @@ jobs:
           wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME2"
           wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME3"
           wget --no-dns-cache --random-wait --continue -d -T 60 -t 30 "$dLINK/$dNAME4"
-          if md5sum -c --quiet "md5.txt"; then
+          if [ md5sum -c --quiet "md5.txt" == "computed checksums did NOT match" ]; then
             # No changes
             echo 'changed=false' >> $GITHUB_OUTPUT
           else
