@@ -61,10 +61,10 @@ cat "$mNAME"
 cat "tmp.txt"
 ls
 echo "_____"
-cat "$mNAME" | sed '2d' > "tmp.txt"
 cat "$mNAME" | sed 's/ //g'
-cat "$mNAME" | sed 's/ //g' > "$mNAME"
+cat "$mNAME" | sed 's/ //g' > "tmp.txt"
 echo "_____"
+cat "tmp.txt" > "./$mNAME"
 cat "$mNAME"
 cat "tmp.txt"
 ls
