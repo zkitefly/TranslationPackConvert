@@ -5,7 +5,7 @@ on:
  push:
     branches: [main]
     paths: 
-      - '.github/workflows/main.yml'
+      - '.github/workflows/convert.yml'
       - 'c.sh'
  schedule:
    - cron: '0 */3 * * *'
