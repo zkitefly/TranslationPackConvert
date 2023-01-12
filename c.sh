@@ -44,30 +44,11 @@ echo "7==============================================="
 echo $cNAME
 zip -q $cNAME -r *
 ls
-echo "8==============================================="
+echo "8-9============================================="
 # md5 校验，输出至 “tmp.txt”。
 echo $cNAME
-md5sum -z "$cNAME" > "tmp.txt"
-cat "tmp.txt"
-ls
-echo "9==============================================="
-# 清除 “tmp.txt” 中多余的内容，并生成 “$mNAME”。
-echo $cNAME
-echo "====="
-sed -i 's/   //g' "tmp.txt"
-echo "====="
-cat "$mNAME"
-cat "tmp.txt"
-ls
-echo "====="
-sed "s/$cNAME//g" "tmp.txt"
-sed -i "s/$cNAME//g" "tmp.txt"
-# sed "s/' '//g" "tmp.txt"
-# sed -i "s/' '//g" "tmp.txt"
-echo "====="
-cat "tmp.txt" > "./$mNAME"
-cat "$mNAME"
-cat "tmp.txt"
+# https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/blob/5a2c1647e597ab0ffa7d203d7f06efbe98fcac73/zip.py#L38
+md5sum -b "$cNAME" | cut -c1-32 > "./$mNAME" 
 ls
 echo "10=============================================="
 # 将 “$cNAME” 和 “$mNAME” 移动至上一层文件夹。
