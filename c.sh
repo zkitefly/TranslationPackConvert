@@ -61,9 +61,9 @@ cat "$mNAME"
 cat "tmp.txt"
 ls
 echo "====="
-cat "$mNAME" | sed ':a;N;$!ba;s/\n/;/g' > "tmp.txt"
 cat "$mNAME" | sed 's/ //g'
-cat "$mNAME" | sed 's/ //g' > "$mNAME"
+cat "$mNAME" | sed 's/ //g' > "tmp.txt"
+cat "tmp.txt" | sed ':a;N;$!ba;s/\n/;/g' > "tmp.txt"
 echo "====="
 cat "$mNAME"
 cat "tmp.txt"
