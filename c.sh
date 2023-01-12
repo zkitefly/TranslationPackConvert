@@ -60,11 +60,11 @@ echo "_____"
 cat "$mNAME"
 cat "tmp.txt"
 ls
-echo "_____"
+echo "====="
 cat "$mNAME" | sed ':a;N;$!ba;s/\n/;/g' > "tmp.txt"
 cat "$mNAME" | sed 's/ //g'
 cat "$mNAME" | sed 's/ //g' > "$mNAME"
-echo "_____"
+echo "====="
 cat "$mNAME"
 cat "tmp.txt"
 ls
