@@ -51,13 +51,7 @@ echo $cNAME
 md5sum -b "$cNAME">"tmp.txt"
 cut "tmp.txt" -c1-32>"$mNAME"
 # https://www.zhihu.com/question/28423104/answer/84024645
-filenames="$mNAME"
-for file in $filenames
-do
-    fileout=${file}".res"
-    echo $fileout
-    tr -d '\n' < file > $fileout
-done
+sed -i ':t;N;s/\n//;b t' "$mNAME"
 cat "$mNAME"
 rm "tmp.txt"
 ls
