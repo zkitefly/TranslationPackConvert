@@ -48,10 +48,10 @@ echo "8-9============================================="
 # md5 校验，输出至 “$mNAME”。
 echo $cNAME
 # https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/blob/5a2c1647e597ab0ffa7d203d7f06efbe98fcac73/zip.py#L38
-md5sum -b "$cNAME">"tmp.txt"
-cut "tmp.txt" -c1-32>"$mNAME"
-# https://www.zhihu.com/question/28423104/answer/84024645
-sed -i 's/.$//g' "$mNAME"
+md5sum -b "$cNAME">"$mNAME"
+cut "$mNAME" -c1-32>"tmp.txt"
+cat "tmp.txt" | tr '\n' ' '>"$mNAME"
+sed -i 's\ \\g' "$mNAME"
 cat "$mNAME"
 rm "tmp.txt"
 ls
