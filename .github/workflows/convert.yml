@@ -24,7 +24,7 @@ jobs:
         shell: bash
         run: |
           echo '======================= 环境变量设置 ========================='
-          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
+          export "dLINK=https://zkitefly.github.io/TranslationPackMirror/files$dLINK"
           # 此处要填写以下工作流的 "dNAME"
           # Convert resources 1.18 -> 1.19.3 1.19.1/2
           export "dNAME1=Minecraft-Mod-Language-Modpack-1-18.zip$dNAME1"
@@ -35,20 +35,25 @@ jobs:
           # Convert resources 1.16-Fabric -> 1.17-Fabric 1.15-Fabric
           export "dNAME4=Minecraft-Mod-Language-Modpack-1-16-Fabric.zip$dNAME4"
           echo '========================== 检查区 ==========================='
-          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME1" "$dLINK/$dNAME1"
-          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME2" "$dLINK/$dNAME2"
-          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME3" "$dLINK/$dNAME3"
-          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME4" "$dLINK/$dNAME4"
+          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O index.txt "$dLINK"
           if md5sum -c --quiet 'md5.txt'; then
             # No changes
             echo 'changed=false' >> $GITHUB_OUTPUT
           else
             # Changes detected
             echo 'changed=true' >> $GITHUB_OUTPUT
-            md5sum *.zip > md5.txt
+            md5sum index.txt > md5.txt
           fi
           echo '=============================================================='
           ./clean-c.sh
+      - name: download resources
+        if: steps.check_updata.outputs.changed == 'true'
+        shell: bash
+        run: |
+          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME1" "$dLINK/$dNAME1"
+          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME2" "$dLINK/$dNAME2"
+          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME3" "$dLINK/$dNAME3"
+          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME4" "$dLINK/$dNAME4"
       - name: install jq & set time
         if: steps.check_updata.outputs.changed == 'true'
         shell: bash
