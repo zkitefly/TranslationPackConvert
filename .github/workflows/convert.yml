@@ -19,6 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: install jq & set time
+        if: steps.check_updata.outputs.changed == 'true'
+        shell: bash
+        run: |
+          sudo apt install jq
+          jq --version
+          sudo timedatectl set-timezone 'Asia/Shanghai'
       - name: check for updates
         id: check_updata
         shell: bash
@@ -57,13 +64,6 @@ jobs:
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME3" "$dLINK/$dNAME3"
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME4" "$dLINK/$dNAME4"
           echo '=============================================================='
-      - name: install jq & set time
-        if: steps.check_updata.outputs.changed == 'true'
-        shell: bash
-        run: |
-          sudo apt install jq
-          jq --version
-          sudo timedatectl set-timezone 'Asia/Shanghai'
       - name: Convert resources 1.18 -> 1.19.3
         if: steps.check_updata.outputs.changed == 'true'
         shell: bash
