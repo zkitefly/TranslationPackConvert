@@ -51,7 +51,7 @@ echo $cNAME
 md5sum -b "$cNAME">"tmp.txt"
 cut "tmp.txt" -c1-32>"$mNAME"
 # https://www.zhihu.com/question/28423104/answer/84024645
-sed -i ':t;N;s/\n//;b t' "$mNAME"
+sed -i 's/.$//g' "$mNAME"
 cat "$mNAME"
 rm "tmp.txt"
 ls
