@@ -1,4 +1,4 @@
 d42f66a2382b554d448e05084b10331b  Minecraft-Mod-Language-Modpack-1-16-Fabric.zip
 d88eea387774f10fefde45dd9f705dbf  Minecraft-Mod-Language-Modpack-1-16.zip
 4c24179367f2829a4512ed37180d3a87  Minecraft-Mod-Language-Modpack-1-18-Fabric.zip
-3ad1e9e888e1754c628010c00f89bfbd  Minecraft-Mod-Language-Modpack-1-18.zip
+3ad1e9e888e1754c628016c00f89bfbd  Minecraft-Mod-Language-Modpack-1-18.zip
