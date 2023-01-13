@@ -316,37 +316,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-#模板：
-#      - name: Convert resources  -> 
-#        if: steps.check_updata.outputs.changed == 'true'
-#        shell: bash
-#        run: |
-#          # 转换
-#          echo '======================= 环境变量设置 ========================='
-#          # 下载链接前缀，后面不得加 /
-#          export "dLINK=https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackMirror/main/files$dLINK"
-#          # 下载文件的名字，带 .zip
-#          export "dNAME=Minecraft-Mod-Language-Modpack- .zip$dNAME"
-#          # 转换的名字，带 .zip
-#          export "cNAME=Minecraft-Mod-Language-Modpack- T .zip$cNAME"
-#          # 修改资源包 pack_format 的 value
-#          export "cV= $cV"
-#          # 校验文件名字，带 .md5
-#          export "mNAME= T .md5$mNAME"
-#          # commit 标题名称，Convert resources + XXX
-#          export "CM=  to  $CM"
-#          echo '======================= 运行修改脚本 ========================='
-#          echo "========================== 预览 ============================="
-#          echo "./c.sh"
-#          echo "============================================================"
-#          ./c.sh
-#          echo '============================================================'
-#          # 清除环境变量，以防沾染其他工作流，若环境变量设置添加了新的设置，请在 clean.sh 中一并添加
-#          ./clean.sh
-#          git config --local user.name "github-actions[bot]"
-#          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-#          git add -A
-#          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）
-#
-#          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
-#            "
