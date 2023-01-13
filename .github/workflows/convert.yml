@@ -20,7 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: install jq & set time
-        if: steps.check_updata.outputs.changed == 'true'
         shell: bash
         run: |
           sudo apt install jq
