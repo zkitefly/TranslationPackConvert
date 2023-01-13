@@ -49,14 +49,14 @@ echo "8-9============================================="
 echo $cNAME
 # https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/blob/5a2c1647e597ab0ffa7d203d7f06efbe98fcac73/zip.py#L38
 md5sum -b "$cNAME">"tmp.txt"
-cut "tmp.txt" -z -c1-32>"$mNAME"
+cut "tmp.txt" -c1-32>"$mNAME"
 # https://www.zhihu.com/question/28423104/answer/84024645
 filenames="$mNAME"
 for file in $filenames
 do
     fileout=${file}".res"
     echo $fileout
-    tr -d '\0' < file > $fileout
+    tr -d '\n' < file > $fileout
 done
 cat "$mNAME"
 rm "tmp.txt"
