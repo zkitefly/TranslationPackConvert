@@ -22,7 +22,28 @@
 
 |
 
+
+
+——————————————
+
+- 自动：
+
 ### **目前 [自动汉化更新非长期支持版](https://www.mcmod.cn/class/8067.html) 模组使用本仓库为镜像源，该模组会在玩家打开游戏时会自动下载本仓库的资源包随后自动装载上，并切换语言为简体中文，以此实现对游戏内容的汉化。可以前往模组页面下载模组。**
+
+——————————————
+
+- 手动：
+
+#### **普通用户请到此处下载：[https://gitcode.net/chearlai/TranslationPackConvert/-/tree/main/files](https://gitcode.net/chearlai/TranslationPackConvert/-/tree/main/files)**
+
+#### 下载时请留意文件后缀对应支持的 MC 版本和 Modloader（也就是Forge、Fabric等）类型。
+
+#### 下载完后，启动游戏并在 “选项” -> “资源包” 中添加资源包。
+
+#### 若资源包不生效，请检查资源包是否与你的客户端（服务端无效）同 MC 版本以及 Modloader 类型（也就是Forge、Fabric等），或尝试调整资源包的优先级。
+
+——————————————
+
 
 |
 
@@ -34,15 +55,22 @@
 
 [**本仓库所含的 zip 文件**](https://zkitefly.github.io/TranslationPackConvert/files)
 
-### **☆推荐**
+### **☆推荐☆**
+
+**https://gitcode.net/chearlai/TranslationPackConvert/-/raw/main/files/ + [本仓库所含的 zip 文件](https://github.com/zkitefly/TranslationPackMirror/tree/main/files)**
+
+例如：
+
+**https://gitcode.net/chearlai/TranslationPackConvert/-/raw/main/files/Minecraft-Mod-Language-Modpack-1-16T1-17.zip**
+
+
+### 其他
 
 **https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackConvert/main/files/ + [本仓库所含的 zip 文件](https://github.com/zkitefly/TranslationPackConvert/tree/main/files)**
 
 例如：
 
 **https://ghproxy.com/https://raw.githubusercontent.com/zkitefly/TranslationPackConvert/main/files/Minecraft-Mod-Language-Modpack-1-16T1-17.zip**
-
-### 其他
 
 ——————————————
 
@@ -90,6 +118,12 @@
 
 使用 wget 下载资源
 
+☆
+
+*https://gitcode.net/chearlai/TranslationPackMirror/-/raw/main/files/Minecraft-Mod-Language-Modpack-1-16.zip*
+
+平均 28.2 MB/s  用时 0s
+
 ——————————————
 
 *https://ghproxy.net/https://raw.githubusercontent.com/zkitefly/TranslationPackConvert/main/files/Minecraft-Mod-Language-Modpack-1-16T1-17.zip*
@@ -129,6 +163,10 @@
 ## 下载地址延迟对比
 
 测试平台：https://www.itdog.cn/ping
+
+*☆gitcode.net☆*
+
+![](https://api.onedrive.com/v1.0/shares/s!AiSrzi-vYVoBhCBXhWF2omNpPJP-/root/content)
 
 ——————————————
 
