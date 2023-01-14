@@ -1,5 +1,7 @@
 # TranslationPackConvert
 
+[**GitHub**](https://github.com/zkitefly/TranslationPackConvert) · [**GitCode**](https://gitcode.net/chearlai/TranslationPackConvert)
+
 **一个将  CFPAOrg/Minecraft-Mod-Language-Package 翻译包转换的自动化仓库**
 
 ![](https://api.onedrive.com/v1.0/shares/s!AiSrzi-vYVoBhB8DB6RdiwO8PFp9/root/content)
