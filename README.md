@@ -1,6 +1,6 @@
 # TranslationPackConvert
 
-[**GitHub**](https://github.com/zkitefly/TranslationPackConvert) · [**GitCode**](https://gitcode.net/chearlai/TranslationPackConvert)
+[**GitHub**](https://github.com/zkitefly/TranslationPackConvert) · [**GitCode**](https://gitcode.net/chearlai/translationpackmirror)
 
 **一个将  CFPAOrg/Minecraft-Mod-Language-Package 翻译包转换的自动化仓库**
 
@@ -36,7 +36,7 @@
 
 - 手动：
 
-#### **普通用户请到此处下载：[https://gitcode.net/chearlai/TranslationPackConvert/-/tree/main/files](https://gitcode.net/chearlai/TranslationPackConvert/-/tree/main/files)**
+#### **普通用户请到此处下载：[https://gitcode.net/chearlai/translationpackmirror/-/tree/main/files](https://gitcode.net/chearlai/translationpackmirror/-/tree/main/files)**
 
 #### 下载时请留意文件后缀对应支持的 MC 版本和 Modloader（也就是Forge、Fabric等）类型。
 
@@ -59,11 +59,11 @@
 
 ### **☆推荐☆**
 
-**https://gitcode.net/chearlai/TranslationPackConvert/-/raw/main/files/ + [本仓库所含的 zip 文件](https://github.com/zkitefly/TranslationPackMirror/tree/main/files)**
+**https://gitcode.net/chearlai/translationpackmirror/-/raw/main/files/ + [本仓库所含的 zip 文件](https://github.com/zkitefly/TranslationPackMirror/tree/main/files)**
 
 例如：
 
-**https://gitcode.net/chearlai/TranslationPackConvert/-/raw/main/files/Minecraft-Mod-Language-Modpack-1-16T1-17.zip**
+**https://gitcode.net/chearlai/translationpackmirror/-/raw/main/files/Minecraft-Mod-Language-Modpack-1-16T1-17.zip**
 
 
 ### 其他
