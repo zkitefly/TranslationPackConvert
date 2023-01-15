@@ -6,6 +6,9 @@ jobs:
   to_gitlab:
     runs-on: ubuntu-latest
     steps:                                              # <-- must use actions/checkout before mirroring!
+      - name: sleep 5m
+        shell: bash
+        run: slepp 5m
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
