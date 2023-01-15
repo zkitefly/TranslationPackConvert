@@ -42,6 +42,38 @@ jobs:
             md5sum index.txt > md5.txt
           fi
           echo '=============================================================='
+
+# https://minecraft.fandom.com/zh/wiki/%E8%B5%84%E6%BA%90%E5%8C%85#%E5%86%85%E5%AE%B9
+
+      - name: Convert resources 1.18 -> 1.19.3-Snapshot
+        if: steps.check_updata.outputs.changed == 'true'
+        shell: bash
+        run: |
+          # 转换
+          echo '======================= 环境变量设置 ========================='
+          # 下载文件的名字，带 .zip
+          export "dNAME=Minecraft-Mod-Language-Modpack-1-18.zip$dNAME"
+          # 转换的名字，带 .zip
+          export "cNAME=Minecraft-Mod-Language-Modpack-1-18T1-19-3s.zip$cNAME"
+          # 修改资源包 pack_format 的 value
+          export "cV=11$cV"
+          # 校验文件名字，带 .md5
+          export "mNAME=1.18t1.19.3s.md5$mNAME"
+          # commit 标题名称，Convert resources + XXX
+          export "CM=1.18 to 1.19.3-Snapshot$CM"
+          echo '======================= 运行修改脚本 ========================='
+          echo "========================== 预览 ============================="
+          cat "c.sh"
+          echo "============================================================"
+          ./c.sh
+          echo '============================================================'
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Convert resources $CM（`date '+%Y-%m-%d %H:%M:%S'`）$GITHUB_RUN_ID
+
+          GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
+            "
       - name: download resources
         if: steps.check_updata.outputs.changed == 'true'
         shell: bash
@@ -66,7 +98,6 @@ jobs:
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME3" "$dLINK/$dNAME3"
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME4" "$dLINK/$dNAME4"
           echo '=============================================================='
-# https://minecraft.fandom.com/zh/wiki/%E8%B5%84%E6%BA%90%E5%8C%85#%E5%86%85%E5%AE%B9
       - name: Convert resources 1.16 -> 1.13/1.14
         if: steps.check_updata.outputs.changed == 'true'
         shell: bash
