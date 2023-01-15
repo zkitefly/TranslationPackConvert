@@ -78,7 +78,7 @@ jobs:
           # 下载文件的名字，带 .zip
           export "dNAME=Minecraft-Mod-Language-Modpack-1-18-Fabric.zip$dNAME"
           # 转换的名字，带 .zip
-          export "cNAME=Minecraft-Mod-Language-Modpack-1-18T1-19-3s-Fabric.zip$cNAME"
+          export "cNAME=Minecraft-Mod-Language-Modpack-1-18-FabricT1-19-3s-Fabric.zip$cNAME"
           # 修改资源包 pack_format 的 value
           export "cV=11$cV"
           # 校验文件名字，带 .md5
