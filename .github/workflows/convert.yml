@@ -66,9 +66,7 @@ jobs:
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME3" "$dLINK/$dNAME3"
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME4" "$dLINK/$dNAME4"
           echo '=============================================================='
-
 # https://minecraft.fandom.com/zh/wiki/%E8%B5%84%E6%BA%90%E5%8C%85#%E5%86%85%E5%AE%B9
-
       - name: Convert resources 1.18-Fabric -> 1.19.3-Snapshot-Fabric
         if: steps.check_updata.outputs.changed == 'true'
         shell: bash
