@@ -4,7 +4,7 @@
 
 [**GitHub**](https://github.com/zkitefly/TranslationPackConvert) · [**GitCode**](https://gitcode.net/chearlai/translationpackconvert)
 
-**一个将  CFPAOrg/Minecraft-Mod-Language-Package 翻译包转换的自动化仓库，非官方下载源。**
+**一个将 [CFPAOrg/Minecraft-Mod-Language-Package](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package) 翻译包转换的自动化仓库，非官方下载源。**
 
 本仓库会将原有的汉化资源包，解压，修改 pack.mcmeta 配置文件，再重新打包。
 
@@ -48,7 +48,7 @@
 
 - 手动：
 
-#### **普通用户请到此处下载：[https://gitcode.net/chearlai/translationpackconvert/-/tree/main/files](https://gitcode.net/chearlai/translationpackconvert/-/tree/main/files)**
+#### **普通用户请到此处下载：[https://zkitefly.github.io/TranslationPackConvert/files/](https://zkitefly.github.io/TranslationPackConvert/files/)**
 
 #### 下载时请留意文件后缀对应支持的 MC 版本和 Modloader（也就是Forge、Fabric等）类型。
 
