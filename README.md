@@ -4,15 +4,25 @@
 
 [**GitHub**](https://github.com/zkitefly/TranslationPackConvert) · [**GitCode**](https://gitcode.net/chearlai/translationpackconvert)
 
-**一个将  CFPAOrg/Minecraft-Mod-Language-Package 翻译包转换的自动化仓库**
+**一个将  CFPAOrg/Minecraft-Mod-Language-Package 翻译包转换的自动化仓库，非官方下载源。**
+
+本仓库会将原有的汉化资源包，解压，修改 pack.mcmeta 配置文件，再重新打包。
+
+这样资源包就可以自动装载上，而不会因为检测到版本不同而警告，且手动添加。
+
+本下载源的原汉化资源包依赖 [zkitefly/TranslationPackMirror](https://github.com/zkitefly/TranslationPackMirror) 。
 
 ![](https://api.onedrive.com/v1.0/shares/s!AiSrzi-vYVoBhB8DB6RdiwO8PFp9/root/content)
 
-**本仓库不接收任何模组翻译，模组翻译上传请前往 [CFPAOrg/Minecraft-Mod-Language-Package](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/pulls) 进行提交**
+**本仓库不接收任何模组翻译，模组翻译上传请前往 [CFPAOrg/Minecraft-Mod-Language-Package](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/pulls) 进行提交。**
+
+**上传时请留意他们规章制度，且上传他们所支持的版本，若违反，本仓库概不负责**
 
 ## 协议
 
 本仓库采用 [知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/)（[简体中文](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)） 进行许可，协议全文可在 [此处](./LICENSE) 查看。
+
+意思是：用到仓库的要声明原仓库地址/名称，不得商业使用，如果基于本仓库做一个新的项目必须使用本协议。
 
 ## 资源列表
 
@@ -32,7 +42,7 @@
 
 - 自动：
 
-### **目前 [自动汉化更新非长期支持版](https://www.mcmod.cn/class/8067.html) 模组使用本仓库为镜像源，该模组会在玩家打开游戏时会自动下载本仓库的资源包随后自动装载上，并切换语言为简体中文，以此实现对游戏内容的汉化。可以前往模组页面下载模组。**
+### **目前 [自动汉化更新](https://www.mcmod.cn/class/1188.html) | [自动汉化更新非长期支持版](https://www.mcmod.cn/class/8067.html) 模组使用本仓库为镜像源，该模组会在玩家打开游戏时会自动下载本仓库的资源包随后自动装载上，并切换语言为简体中文，以此实现对游戏内容的汉化。可以前往模组页面下载模组。**
 
 ——————————————
 
