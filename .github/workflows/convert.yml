@@ -66,6 +66,8 @@ jobs:
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME3" "$dLINK/$dNAME3"
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME4" "$dLINK/$dNAME4"
           echo '=============================================================='
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "Download resources （`date '+%Y-%m-%d %H:%M:%S'`）$GITHUB_RUN_ID
 
