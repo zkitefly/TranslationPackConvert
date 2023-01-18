@@ -296,7 +296,6 @@ jobs:
           GitHub Action: https://github.com/${{ github.repository }}/actions/runs/$GITHUB_RUN_ID
             "
       - name: Push changes
-        # 注意：在新增一个转换时，一定要在下方的 if 规则，否则当该资源包更新时无法检测到它！
         if: steps.check_updata.outputs.changed == 'true'
         uses: ad-m/github-push-action@master
         with:
