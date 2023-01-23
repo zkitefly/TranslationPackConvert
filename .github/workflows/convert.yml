@@ -61,9 +61,7 @@ jobs:
           export "dNAME4=Minecraft-Mod-Language-Modpack-1-16-Fabric.zip$dNAME4"
           echo '========================== 检查区 ==========================='
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME0" "$dLINK/$dNAME0"
-          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME1" "$dLINK/$dNAME1"
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME2" "$dLINK/$dNAME2"
-          wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME3" "$dLINK/$dNAME3"
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O "$dNAME4" "$dLINK/$dNAME4"
           echo '=============================================================='
 # https://minecraft.fandom.com/zh/wiki/%E8%B5%84%E6%BA%90%E5%8C%85#%E5%86%85%E5%AE%B9
