@@ -1,5 +1,7 @@
 # TranslationPackConvert 
 
+![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/zkitefly/TranslationPackConvert&count_bg=%23008080&title_bg=%23008080&icon=&icon_color=%23008080&title=https://github.com/zkitefly/TranslationPackConvert&edge_flat=false)
+
 ![](https://github.githubassets.com/images/icons/emoji/tada.png)
 
 [**GitHub**](https://github.com/zkitefly/TranslationPackConvert) · [**GitCode**](https://gitcode.net/chearlai/translationpackconvert)
