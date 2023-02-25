@@ -32,6 +32,7 @@ jobs:
           echo '======================= 环境变量设置 ========================='
           export "dLINK=https://zkitefly.github.io/TranslationPackMirror/files$dLINK"
           echo '========================== 检查区 ==========================='
+          rm index.txt
           wget --no-dns-cache --random-wait -d -T 60 -t 30 -O index.txt "$dLINK"
           if md5sum -c --quiet 'md5.txt'; then
             # No changes
